@@ -1,29 +1,19 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
+import { defineConfig, UserConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import path from "path";
 
-export default defineConfig({
-  plugins: [
-    react({
-      jsxImportSource: '@emotion/react',
-      plugins: [
-        ['@swc/plugin-emotion', { 
-          autoLabel: 'dev-only',
-          labelFormat: '[dirname]-[filename]-[local]'
-        }]
-      ]
-    })
-  ],
-  build: {
-    outDir: 'dist',
-    sourcemap: false,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true
-      }
-    }
+// https://vitejs.dev/config/
+export default defineConfig(({ mode }: { mode: string }) => ({
+  server: {
+    host: "::",
+    port: 8080,
   },
-  preview: {
-    port: 4173
-  }
-});
+  plugins: [
+    react(),
+  ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+}));
