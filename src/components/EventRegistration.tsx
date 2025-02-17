@@ -326,7 +326,7 @@ const EventRegistration = () => {
             {[
               {
                 q: "What is OpenSys?",
-                a: "OpenSys is COSC's flagship tech event series featuring challenges, workshops, and competitions focused on open-source development."
+                a: "OpenSys is CBIT's premier open-source technology symposium bringing together students, developers, and tech enthusiasts for learning, networking, and innovation."
               },
               {
                 q: "When and where is it happening?",
@@ -341,20 +341,12 @@ const EventRegistration = () => {
                 a: "While basic programming knowledge is helpful, many events are designed for beginners. Each event description includes specific prerequisites."
               },
               {
-                q: "What should I bring to the events?",
-                a: "Participants should bring their laptops, chargers, and any specific software mentioned in the event prerequisites. We'll provide refreshments and necessary resources."
-              },
-              {
                 q: "Are there any prizes?",
-                a: "Yes! Each event has exciting prizes for winners, including cash prizes, swag, and opportunities for internships with our partner companies."
+                a: "Yes! Each event has exciting prizes for winners, including cash prizes and participation certificates!"
               },
               {
                 q: "Can I participate in multiple events?",
                 a: "Yes, you can participate in multiple events as long as their schedules don't overlap. Check the detailed schedule to plan accordingly."
-              },
-              {
-                q: "Is there a refund policy?",
-                a: "Registration fees are non-refundable, but you can transfer your registration to another participant up to 48 hours before the event."
               }
             ].map((faq, index) => (
               <details 
