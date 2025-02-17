@@ -103,9 +103,6 @@ const EventRegistration = () => {
                   {item}
                 </a>)}
             </div>
-            <button className="bg-white/90 hover:bg-white text-[#7E69AB] text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-white/20 py-[7px] px-[47px] rounded-3xl">
-              Register Now
-            </button>
           </div>
         </div>
       </nav>
