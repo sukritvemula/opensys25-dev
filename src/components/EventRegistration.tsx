@@ -94,7 +94,7 @@ const EventRegistration = () => {
       <div className="fixed inset-0 bg-gradient-to-br from-[#9b87f5] via-[#7E69AB] to-[#D946EF] opacity-90 animate-gradient" />
       <div className="fixed inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjEuNSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+')] opacity-20" />
 
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50">
+      <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
         <div className="px-2 py-1.5 bg-white/10 backdrop-blur-md rounded-full border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
           <div className="flex items-center gap-2 md:gap-8 px-[4px] mx-[8px] my-[5px]">
             <Logo />
@@ -107,7 +107,7 @@ const EventRegistration = () => {
         </div>
       </nav>
 
-      <section id="home" className="min-h-screen flex items-center justify-center mt-7 pt-20 pb-32 relative">
+      <section id="home" className="min-h-screen flex items-center justify-center pt-20 pb-32 relative">
         <div className="absolute top-0 right-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-2000" />
         
