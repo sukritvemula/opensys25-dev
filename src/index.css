@@ -4,89 +4,17 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --color-bg1: rgb(255, 0, 150); /* Bright Pink */
+    --color-bg2: rgb(138, 43, 226); /* Bright Purple */
+    --color-text: #ffffff; /* White text */
+    --color-accent: #ff69b4; /* Hot Pink */
   }
-
+  
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --color-bg1: rgb(255, 0, 150);
+    --color-bg2: rgb(138, 43, 226);
+    --color-text: #ffffff;
+    --color-accent: #ff69b4;
   }
 }
 
@@ -95,10 +23,99 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
   }
 }
 
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(45deg, var(--color-bg1), var(--color-bg2));
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--color-bg1), var(--color-bg2));
+  z-index: -1;
+  opacity: 0.9; /* Slightly reduce opacity to make stars more visible */
+}
+
+.container {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+h1 {
+  color: var(--color-accent);
+}
+
+button {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #ff1493;
+}
+
+.stars, .stars2, .stars3 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.stars {
+  background: transparent url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+  animation: sparkle 200s linear infinite;
+}
+
+.stars2 {
+  background: transparent url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+  animation: sparkle 300s linear infinite;
+}
+
+.stars3 {
+  background: transparent url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+  animation: sparkle 400s linear infinite;
+}
+
+@keyframes sparkle {
+  from { 
+    background-position: 0 0; 
+  }
+  to { 
+    background-position: -10000px 5000px; 
+  }
+}
+
+/* Animations */
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -109,11 +126,6 @@
   100% {
     background-position: 0% 50%;
   }
-}
-
-.animate-gradient {
-  animation: gradient 15s ease infinite;
-  background-size: 200% 200%;
 }
 
 @keyframes blob {
@@ -131,14 +143,6 @@
   }
 }
 
-.animate-blob {
-  animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
 @keyframes fade-up {
   0% {
     opacity: 0;
@@ -148,10 +152,6 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.animate-fade-up {
-  animation: fade-up 0.5s ease-out forwards;
 }
 
 @keyframes pulse {
@@ -165,10 +165,106 @@
   }
 }
 
+@keyframes rotate-bg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes expand {
+  0% {
+    width: 0;
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0;
+    transform: translateX(50%);
+  }
+}
+
+/* Utility classes */
+.animate-gradient {
+  animation: gradient 15s ease infinite;
+  background-size: 200% 200%;
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out forwards;
+}
+
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.section-divider {
+  position: relative;
+  height: 4px;  /* Increased from 2px */
+  max-width: 800px;
+  margin: 2rem auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  overflow: hidden;
+}
+
+.section-divider::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 8px;  /* Increased from 4px */
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #FFD700,  /* Bright Gold */
+    #00BFFF,  /* Deep Sky Blue */
+    #FFD700,  /* Bright Gold */
+    transparent
+  );
+  animation: expand 2s ease-out infinite;
+  box-shadow: 
+    0 0 15px rgba(255, 215, 0, 0.8),    /* Enhanced Gold glow */
+    0 0 25px rgba(0, 191, 255, 0.8),     /* Enhanced Blue glow */
+    0 0 35px rgba(255, 215, 0, 0.6),     /* Enhanced Outer gold glow */
+    0 0 45px rgba(0, 191, 255, 0.4);     /* Additional outer blue glow */
+  border-radius: 4px;  /* Increased from 2px for smoother edges */
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #0f172a;
+    color: #f8fafc;
+  }
+}
+
+.p5Canvas {
+  position: relative;
+  z-index: 10;
+}
+
+canvas {
+  display: block;
+  touch-action: none;
 }
