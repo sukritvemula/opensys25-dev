@@ -4,6 +4,7 @@ import Logo from "./Logo";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AnimatedGlobe from './AnimatedGlobe'
+import Logos from "./Logos";
 
 const EventRegistration = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -84,7 +85,7 @@ const EventRegistration = () => {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-  
+
     // Animate sections individually
     document.querySelectorAll("section").forEach(section => {
       gsap.from(section, {
@@ -98,7 +99,7 @@ const EventRegistration = () => {
           toggleActions: "play none none reverse",
         },
       });
-  
+
       // Animate elements inside each section
       const elements = section.querySelectorAll(".animate-fade-up");
       gsap.from(elements, {
@@ -112,7 +113,7 @@ const EventRegistration = () => {
         },
       });
     });
-  
+
     // Hero section animation
     gsap.from(".hero-content", {
       opacity: 0,
@@ -120,7 +121,7 @@ const EventRegistration = () => {
       duration: 1.5,
       ease: "power4.out",
     });
-  
+
     // Social links stagger animation
     gsap.from(".social-link", {
       opacity: 0,
@@ -132,18 +133,18 @@ const EventRegistration = () => {
         start: "top 80%",
       },
     });
-  
+
     // Event card hover animations
     document.querySelectorAll('[id^="event-card-"]').forEach(card => {
       card.addEventListener("mouseenter", () => {
         gsap.to(card, { scale: 1.02, y: -5, duration: 0.3, ease: "power2.out" });
       });
-  
+
       card.addEventListener("mouseleave", () => {
         gsap.to(card, { scale: 1, y: 0, duration: 0.3, ease: "power2.out" });
       });
     });
-  
+
     // FAQ animations
     document.querySelectorAll("details").forEach(item => {
       item.addEventListener("toggle", () => {
@@ -153,7 +154,7 @@ const EventRegistration = () => {
         }
       });
     });
-  
+
     // Floating logo effect
     gsap.to(".logo", {
       y: -10,
@@ -162,13 +163,13 @@ const EventRegistration = () => {
       yoyo: true,
       ease: "power1.inOut",
     });
-  
+
     // Clean up on unmount
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
-  
+
 
   return (
     <div className="min-h-screen font-sora relative overflow-hidden">
@@ -178,22 +179,22 @@ const EventRegistration = () => {
       <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-3xl">
         <div className="px-2 py-1.5 bg-white/10 backdrop-blur-md rounded-full border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
           <div className="flex items-center justify-between gap-2 md:gap-8 px-[4px] mx-[8px] my-[5px]">
-            <Logo />
+            <Logos />
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-1">
               {["Home", "About", "Events", "FAQ", "Contact"].map(item => (
-                <a 
-                  key={item} 
-                  href={`#${item.toLowerCase()}`} 
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
                   className="px-4 py-2 text-sm text-purple-100 hover:text-white transition-colors rounded-full hover:bg-white/10"
                 >
                   {item}
                 </a>
               ))}
             </div>
-            
+
             {/* Mobile Menu Button */}
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 text-purple-100 hover:text-white"
             >
@@ -209,9 +210,9 @@ const EventRegistration = () => {
           {isMobileMenuOpen && (
             <div className="md:hidden absolute top-full left-0 right-0 mt-2 py-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/10">
               {["Home", "About", "Events", "FAQ", "Contact"].map(item => (
-                <a 
-                  key={item} 
-                  href={`#${item.toLowerCase()}`} 
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
                   className="block px-4 py-2 text-sm text-purple-100 hover:text-white hover:bg-white/10"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -226,7 +227,7 @@ const EventRegistration = () => {
       <section id="home" className="min-h-screen flex items-center justify-center mt-7 pt-20 pb-32 relative">
         <div className="absolute top-0 right-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-2000" />
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Left side - Text content */}
@@ -246,19 +247,19 @@ const EventRegistration = () => {
                 </div>
                 <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-white to-[#E5DEFF] bg-clip-text text-transparent animate-fade-up">
                   OpenSys
-                  
+
                 </h1>
                 <div className="w-24 h-1 bg-gradient-to-r from-white/0 via-white/50 to-white/0 mx-auto mb-8" />
-                  <p
-  className="text-2xl md:text-3xl font-bold mb-8 animate-fade-up text-transparent bg-clip-text bg-gradient-to-r from-pink-700 via-purple-300 to-red-500 animate-gradient"
-  style={{
-                      animationDelay: "0.2s",
-                    }}
-                  >
-                    Where Technology Meets Innovation
-                  </p>
+                <p
+                  className="text-2xl md:text-3xl font-bold mb-8 animate-fade-up text-transparent bg-clip-text bg-gradient-to-r from-pink-700 via-purple-300 to-red-500 animate-gradient"
+                  style={{
+                    animationDelay: "0.2s",
+                  }}
+                >
+                  Where Technology Meets Innovation
+                </p>
 
-                  <style>
+                <style>
                   {`
                   @keyframes gradientShift {
                     0% { background-position: 0% 50%; }
@@ -271,25 +272,25 @@ const EventRegistration = () => {
                     animation: gradientShift 4s ease-in-out infinite;
                   }
                   `}
-                  </style>
+                </style>
 
 
                 <p className="text-lg mb-12 text-white/80 animate-fade-up max-w-2xl mx-auto" style={{
-                animationDelay: "0.3s"
-              }}>
+                  animationDelay: "0.3s"
+                }}>
                   Join us for an extraordinary journey into the future of technology. Connect with industry leaders, innovators, and fellow tech enthusiasts.
                 </p>
-                
+
 
               </div>
             </div>
 
             {/* Right side - Globe/Rocket - Show on both mobile and desktop */}
             <div className="block order-2 h-[600px]">
-              <iframe 
-                src='https://my.spline.design/rocket-d2327780366df2abab1d145b9e45954c/' 
-                frameBorder='0' 
-                width='100%' 
+              <iframe
+                src='https://my.spline.design/rocket-d2327780366df2abab1d145b9e45954c/'
+                frameBorder='0'
+                width='100%'
                 height='100%'
                 style={{ minHeight: '600px' }}
               />
@@ -356,9 +357,9 @@ const EventRegistration = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
-                title: "Git Cryptex",
+                title: "MazerLift",
                 icon: Code,
-                date: "26th February 2025 | 10:00 AM IST",
+                date: "4th March 2025",
                 location: "Main Conference Hall",
                 team: "Team of 2-3 Members",
                 duration: "4 Hours",
@@ -370,7 +371,7 @@ const EventRegistration = () => {
               {
                 title: "Decipher Challenge",
                 icon: Laptop2,
-                date: "27th February 2025 | 2:00 PM IST",
+                date: "5th March 2025",
                 location: "Auditorium B",
                 team: "Solo or Team of 2",
                 duration: "3 Hours",
@@ -382,7 +383,7 @@ const EventRegistration = () => {
               {
                 title: "Code Odyssey",
                 icon: Rocket,
-                date: "26th-27th February 2025",
+                date: "4th-5th March 2025",
                 location: "Workshop Rooms 1-3",
                 team: "Individual Participation",
                 duration: "48-Hour Marathon",
@@ -433,9 +434,9 @@ const EventRegistration = () => {
                       <span className="font-medium text-[#E5DEFF]">{event.prize}</span>
                     </div>
                   </div>
-                  
+
                   <div className="mt-auto">
-                    <button 
+                    <button
                       className="w-full py-2.5 rounded-full bg-[#E5DEFF] text-[#7E69AB] hover:bg-white hover:scale-[1.02] transition-all duration-300 font-medium"
                     >
                       Register Now
@@ -485,7 +486,7 @@ const EventRegistration = () => {
                 a: "Yes, you can participate in multiple events as long as their schedules don't overlap. Check the detailed schedule to plan accordingly."
               }
             ].map((faq, index) => (
-              <details 
+              <details
                 key={index}
                 className="group relative overflow-hidden rounded-xl"
               >
@@ -530,10 +531,10 @@ const EventRegistration = () => {
                   <div className="relative p-8 space-y-6">
                     <div className="flex items-start gap-4">
                       <Mail className="w-6 h-6 text-[#E5DEFF] shrink-0" />
-                      <div>
+                      <div className="w-full">
                         <h3 className="font-bold text-white mb-1">Email</h3>
-                        <a 
-                          href="mailto:cosc@cbit.ac.in" 
+                        <a
+                          href="mailto:cosc@cbit.ac.in"
                           className="text-purple-100/90 hover:text-pink-200 transition-colors"
                         >
                           cosc@cbit.ac.in
@@ -543,7 +544,7 @@ const EventRegistration = () => {
 
                     <div className="flex items-start gap-4">
                       <Phone className="w-6 h-6 text-[#E5DEFF] shrink-0" />
-                      <div>
+                      <div className="w-full">
                         <h3 className="font-bold text-white mb-1">Contact</h3>
                         <div className="space-y-1">
                           <a href="tel:+919542590164" className="block text-white/80 hover:text-[#E5DEFF] transition-colors">
@@ -558,11 +559,11 @@ const EventRegistration = () => {
 
                     <div className="flex items-start gap-4">
                       <MapPin className="w-6 h-6 text-[#E5DEFF] shrink-0" />
-                      <div>
+                      <div className="w-full">
                         <h3 className="font-bold text-white mb-1">Location</h3>
-                        <a 
-                          href="https://maps.google.com/?q=CBIT+Hyderabad" 
-                          target="_blank" 
+                        <a
+                          href="https://maps.google.com/?q=CBIT+Hyderabad"
+                          target="_blank"
                           rel="noopener noreferrer"
                           className="text-white/80 hover:text-[#E5DEFF] transition-colors"
                         >
@@ -579,22 +580,23 @@ const EventRegistration = () => {
                 <div className="absolute inset-0 bg-[#8471C9]/20 backdrop-blur-md border border-white/10 transition-all duration-300" />
                 <div className="relative p-8">
                   <h3 className="text-2xl font-bold text-white mb-6">Connect With Us</h3>
-                  <div className="social-links grid grid-cols-2 gap-4 mb-8">
+                  <div className="social-links grid grid-cols-2 gap-3 mb-6">
                     {socialLinks.map((social) => (
                       <a
                         key={social.name}
                         href={social.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 
-                                  bg-white/10 hover:bg-white/20 text-white transition-all duration-300
-                                  ${social.color}`}
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 
+                  bg-white/10 hover:bg-white/20 text-white transition-all duration-300
+                  ${social.color}`}
                       >
-                        <social.icon className="w-5 h-5" />
-                        <span>{social.name}</span>
+                        <social.icon className="w-4 h-4" />
+                        <span className="text-sm">{social.name}</span>
                       </a>
                     ))}
                   </div>
+
                   <p className="text-white/80">
                     Follow us for the latest updates and announcements about OpenSys 2025!
                   </p>
@@ -640,7 +642,7 @@ const EventRegistration = () => {
       <footer className="py-12 border-t border-white/10">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center">
-            <Logo />
+            <Logos />
             <p className="mt-6 text-purple-100/60 text-sm">
               COPYRIGHT © 2025 COSC. ALL RIGHTS RESERVED.
             </p>
