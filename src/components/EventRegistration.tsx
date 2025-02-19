@@ -1,43 +1,10 @@
 import { useState, useEffect } from "react";
 import { Calendar, Users, MapPin, Mail, Phone, Trophy, Github, Instagram, MessageSquare, Sparkles, Clock, CheckCircle2, XCircle, HelpCircle, Rocket, Book, Code, Target, Computer, Laptop2, GraduationCap, Facebook, Twitter, Linkedin } from "lucide-react";
 import Logo from "./Logo";
+import Countdown from "./countdown/Countdown";
 
 const EventRegistration = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
-
-  const [registrationType, setRegistrationType] = useState<'opens' | 'closes'>('opens');
-
-  useEffect(() => {
-    const openingDate = new Date('2025-02-26T00:00:00');
-    const closingDate = new Date('2025-02-27T23:59:59');
-
-    const calculateTimeLeft = () => {
-      const now = new Date();
-      let targetDate = registrationType === 'opens' ? openingDate : closingDate;
-      const difference = targetDate.getTime() - now.getTime();
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60)
-        });
-      } else if (registrationType === 'opens') {
-        setRegistrationType('closes');
-      }
-    };
-
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
-
-    return () => clearInterval(timer);
-  }, [registrationType]);
+  
 
   const getEventStatusStyle = (status: 'open' | 'closed' | 'coming-soon') => {
     switch (status) {
@@ -113,11 +80,10 @@ const EventRegistration = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center text-white">
-            <div className="inline-block px-6 py-2 rounded-full bg-white/10 text-white font-medium text-sm mb-8 animate-fade-up">
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-[#E5DEFF]" />
-                <span className="text-sm font-semibold">
-                  Registration {registrationType === 'opens' ? 'opens' : 'closes'} in: {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+            <div className="inline-block px-6 py-2 mb-8 animate-fade-up">
+              <div className="flex items-center ">
+                <span className="">
+                 <Countdown />
                 </span>
               </div>
             </div>
