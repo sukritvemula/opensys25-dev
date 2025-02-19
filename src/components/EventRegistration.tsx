@@ -181,7 +181,10 @@ const EventRegistration = () => {
               {["Home", "About", "Events", "FAQ", "Contact"].map(item => (
                 <a
                   key={item}
-                  href={`#${item.toLowerCase()}`}
+                  href={`#${item.toLowerCase()}`}>
+                </a>
+                ))}
+        </div>
 
 
 
