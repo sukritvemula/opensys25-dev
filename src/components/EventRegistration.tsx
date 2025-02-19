@@ -226,9 +226,9 @@ const EventRegistration = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-2000" />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            {/* Left side - Text content */}
-            <div className="text-center md:text-left order-1">
+          <div className="grid grid-cols-1 gap-8 items-center">
+            {/* Content */}
+            <div className="text-center">
               <div className="inline-block px-6 py-2 rounded-full bg-white/10 text-white font-medium text-sm mb-8 animate-fade-up">
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-[#E5DEFF]" />
@@ -238,62 +238,21 @@ const EventRegistration = () => {
                 </div>
               </div>
 
-
-              <div className="max-w-4xl mx-auto md:mx-0">
+              <div className="max-w-4xl mx-auto">
                 <div className="inline-block mb-4">
                   <Sparkles className="w-8 h-8 text-[#E5DEFF] animate-pulse" />
                 </div>
                 <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-white to-[#E5DEFF] bg-clip-text text-transparent animate-fade-up">
                   OpenSys
-
                 </h1>
                 <div className="w-24 h-1 bg-gradient-to-r from-white/0 via-white/50 to-white/0 mx-auto mb-8" />
-                <p
-                  className="text-2xl md:text-3xl font-bold mb-8 animate-fade-up text-transparent bg-clip-text bg-gradient-to-r from-pink-700 via-purple-300 to-red-500 animate-gradient"
-                  style={{
-                    animationDelay: "0.2s",
-                  }}
-                >
+                <p className="text-2xl md:text-3xl font-bold mb-8 animate-fade-up text-transparent bg-clip-text bg-gradient-to-r from-pink-700 via-purple-300 to-red-500 animate-gradient" style={{ animationDelay: "0.2s" }}>
                   Where Technology Meets Innovation
                 </p>
-
-                <style>
-
-                  {`
-                  @keyframes gradientShift {
-                    0% { background-position: 0% 50%; }
-                    50% { background-position: 100% 50%; }
-                    100% { background-position: 0% 50%; }
-                  }
-
-                  .animate-gradient {
-                    background-size: 200% 200%;
-                    animation: gradientShift 4s ease-in-out infinite;
-                  }
-                  `}
-                </style>
-
-
-                <p className="text-lg mb-12 text-white/80 animate-fade-up max-w-2xl mx-auto" style={{
-                  animationDelay: "0.3s"
-                }}>
+                <p className="text-lg mb-12 text-white/80 animate-fade-up max-w-2xl mx-auto" style={{ animationDelay: "0.3s" }}>
                   Join us for an extraordinary journey into the future of technology. Connect with industry leaders, innovators, and fellow tech enthusiasts.
                 </p>
-
-
               </div>
-
-            </div>
-
-            {/* Right side - Globe/Rocket - Show on both mobile and desktop */}
-            <div className="block order-2 h-[600px]">
-              <iframe
-                src='https://my.spline.design/rocket-d2327780366df2abab1d145b9e45954c/'
-                frameBorder='0'
-                width='100%'
-                height='100%'
-                style={{ minHeight: '600px' }}
-              />
             </div>
           </div>
         </div>
