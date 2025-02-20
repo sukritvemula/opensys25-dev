@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Calendar, Users, MapPin, Mail, Phone, Trophy, Github, Instagram, MessageSquare, Sparkles, Clock, CheckCircle2, XCircle, HelpCircle, Rocket, Book, Code, Target, Computer, Laptop2, GraduationCap, Facebook, Twitter, Linkedin, Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import gsap from "gsap";
@@ -6,6 +6,75 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AnimatedGlobe from './AnimatedGlobe'
 import Logos from "./Logos";
 
+const EncryptedText = ({ text }: { text: string }) => {
+  const [iteration, setIteration] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(true);
+  const intersectionRef = useRef(null);
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ$#@&*<>[]{}!?/\\|+=";
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+          setIteration(0);
+          setShouldAnimate(true);
+        }
+      });
+    });
+
+    observer.observe(intersectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
+
+    const startAnimation = () => {
+      setIteration(0);
+      setShouldAnimate(true);
+    };
+
+    if (isVisible && shouldAnimate) {
+      interval = setInterval(() => {
+        setIteration((prev) => {
+          if (prev >= text.length) {
+            setShouldAnimate(false);
+            setTimeout(startAnimation, 3000);
+            return prev;
+          }
+          return prev + 1;
+        });
+      }, 30);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isVisible, shouldAnimate, text.length]);
+
+  const encrypt = (iteration: number) => {
+    return text
+      .split("")
+      .map((letter, index) => {
+        if (index < iteration) {
+          return text[index];
+        }
+        if (letter === " ") return " ";
+        return letters[Math.floor(Math.random() * letters.length)];
+      })
+      .join("");
+  };
+
+  return (
+    <span ref={intersectionRef} className="font-mono text-sm md:text-base text-purple-100/60 tracking-wider">
+      {isVisible ? encrypt(iteration) : text}
+    </span>
+  );
+};
 
 const EventRegistration = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -608,9 +677,9 @@ const EventRegistration = () => {
 
             <Logos />
 
-            <p className="mt-6 text-purple-100/60 text-sm">
-              COPYRIGHT © 2025 COSC. ALL RIGHTS RESERVED.
-            </p>
+            <div className="mt-6">
+              <EncryptedText text="COPYRIGHT © 2025 COSC. ALL RIGHTS RESERVED." />
+            </div>
           </div>
         </div>
       </footer>
