@@ -116,19 +116,19 @@ const Index = () => {
     {
       name: 'GitHub',
       icon: Github,
-      href: 'https://github.com/cbitosc',
+      href: '#',
       hoverClass: 'hover:bg-[#333]/20 hover:text-white hover:shadow-white/20'
     },
     {
       name: 'Instagram',
       icon: Instagram,
-      href: 'https://www.instagram.com/cbitosc/',
+      href: '#',
       hoverClass: 'hover:bg-[#333]/20 hover:text-white hover:shadow-white/20'
     },
     {
       name: 'LinkedIn',
       icon: Linkedin,
-      href: 'https://www.linkedin.com/company/cbitosc',
+      href: '#',
       hoverClass: 'hover:bg-[#333]/20 hover:text-white hover:shadow-white/20'
     }
   ];
