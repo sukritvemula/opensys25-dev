@@ -1,8 +1,8 @@
 import * as React from "react"
 import * as MenubarPrimitive from "@radix-ui/react-menubar"
 import { Check, ChevronRight, Circle } from "lucide-react"
-
 import { cn } from "@/lib/utils"
+import { useEffect } from "react"
 
 const MenubarMenu = MenubarPrimitive.Menu
 
@@ -17,16 +17,40 @@ const MenubarRadioGroup = MenubarPrimitive.RadioGroup
 const Menubar = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Root>
->(({ className, ...props }, ref) => (
-  <MenubarPrimitive.Root
-    ref={ref}
-    className={cn(
-      "flex h-10 items-center space-x-1 rounded-md border bg-background p-1",
-      className
-    )}
-    {...props}
-  />
-))
+>(({ className, ...props }, ref) => {
+  useEffect(() => {
+    const handleLinkClick = (e: Event) => {
+      const target = e.target as HTMLAnchorElement
+      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
+        e.preventDefault()
+        const targetElement = document.querySelector(target.getAttribute('href')!)
+        const offset = 100 // Adjust this value to set the offset
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - offset,
+            behavior: 'smooth'
+          })
+        }
+      }
+    }
+
+    document.addEventListener('click', handleLinkClick)
+    return () => {
+      document.removeEventListener('click', handleLinkClick)
+    }
+  }, [])
+
+  return (
+    <MenubarPrimitive.Root
+      ref={ref}
+      className={cn(
+        "flex h-10 items-center space-x-1 rounded-md border bg-background p-1",
+        className
+      )}
+      {...props}
+    />
+  )
+})
 Menubar.displayName = MenubarPrimitive.Root.displayName
 
 const MenubarTrigger = React.forwardRef<
