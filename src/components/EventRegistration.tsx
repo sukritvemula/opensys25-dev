@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Calendar, Users, MapPin, Mail, Phone, Trophy, Github, Instagram, MessageSquare, Sparkles, Clock, CheckCircle2, XCircle, HelpCircle, Rocket, Book, Code, Target, Computer, Laptop2, GraduationCap, Facebook, Twitter, Linkedin, Menu, X } from "lucide-react";
+import { Calendar, Users, MapPin, Mail, Phone, Trophy, Github, Instagram, MessageSquare, Sparkles, Clock, CheckCircle2, XCircle, HelpCircle, Rocket, Book, Code, Target, Computer, Laptop2, GraduationCap, Facebook, Twitter, Linkedin, Menu, X, Award, Medal, Puzzle, Shield, Terminal, GitBranch, Search } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Logos from "./Logos";
@@ -222,6 +222,29 @@ const EventRegistration = () => {
     };
   }, []);
 
+  // Add this useEffect hook to handle the scroll offset
+  useEffect(() => {
+    const handleLinkClick = (e: Event) => {
+      const target = e.target as HTMLAnchorElement;
+      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
+        e.preventDefault();
+        const targetElement = document.querySelector(target.getAttribute('href')!);
+        const offset =25; // Adjust this value to set the offset
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - offset,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+
+    document.addEventListener('click', handleLinkClick);
+    return () => {
+      document.removeEventListener('click', handleLinkClick);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen font-sora">
       <div className="absolute inset-0 fixed bg-gradient-to-br from-[#4B0082] to-black" />
@@ -249,8 +272,8 @@ const EventRegistration = () => {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 text-[rgb(255,0,150)] hover:text-white 
-                transition-colors duration-300 hover:scale-110 transform-gpu"
+                className="md:hidden p-2 text-white bg-[rgb(255,0,150)] rounded-full 
+                transition-colors duration-300 hover:text-white hover:scale-110 transform-gpu"
               >
                 {isMobileMenuOpen ? (
                   <X className="w-6 h-6" />
@@ -355,38 +378,29 @@ const EventRegistration = () => {
               {[
                 {
                   title: "MazerLift",
-                  icon: Code,
+                  icon: GitBranch, // Changed icon to GitBranch
                   date: "4th March 2025",
-                  location: "Main Conference Hall",
                   team: "Team of 2-3 Members",
-                  duration: "4 Hours",
                   description: "A two-stage challenge testing your Git & GitHub skills! Demonstrate version control mastery through practical scenarios and team collaboration.",
                   status: 'open' as const,
-                  level: 'Intermediate',
                   prize: "Exciting cash prizes!"
                 },
                 {
                   title: "Decipher Challenge",
-                  icon: Laptop2,
+                  icon: Search, // Changed icon to Search
                   date: "5th March 2025",
-                  location: "Auditorium B",
                   team: "Solo or Team of 2",
-                  duration: "3 Hours",
                   description: "Race against time in this thrilling scavenger hunt! Decrypt mysterious messages, solve coding puzzles, and uncover hidden patterns.",
                   status: 'open' as const,
-                  level: "Beginner Friendly",
                   prize: "Exciting cash prizes!"
                 },
                 {
                   title: "Code Odyssey",
-                  icon: Rocket,
+                  icon: Code, // Changed icon to Code
                   date: "4th-5th March 2025",
-                  location: "Workshop Rooms 1-3",
                   team: "Individual Participation",
-                  duration: "48-Hour Marathon",
                   description: "An intensive coding marathon featuring increasingly complex challenges across multiple domains including AI, Web Development, and Algorithms.",
                   status: 'open' as const,
-                  level: 'Advanced',
                   prize: "Exciting cash prizes!"
                 }
               ].map((event, index) => (
@@ -419,15 +433,11 @@ const EventRegistration = () => {
                         <span>{event.date}</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm text-white/70">
-                        <MapPin className="w-4 h-4 flex-shrink-0" />
-                        <span>{event.location}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-white/70">
                         <Users className="w-4 h-4 flex-shrink-0" />
                         <span>{event.team}</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm text-white/70">
-                        <Trophy className="w-4 h-4 flex-shrink-0" />
+                        <Award className="w-4 h-4 flex-shrink-0" />
                         <span className="font-medium text-[#E5DEFF]">{event.prize}</span>
                       </div>
                     </div>
@@ -623,7 +633,7 @@ const EventRegistration = () => {
                   CBIT
                 </a>
                 <a
-                  href="https://cbitosc.org"
+                  href="https://cbitosc.github.io/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/80 hover:text-[#E5DEFF] transition-colors"
@@ -637,6 +647,14 @@ const EventRegistration = () => {
                   className="text-white/80 hover:text-[#E5DEFF] transition-colors"
                 >
                   HacktoberFest'24
+                </a>
+                <a
+                  href="https://cbitosc.substack.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 hover:text-[#E5DEFF] transition-colors"
+                >
+                  COSC Newsletter
                 </a>
               </div>
             </div>
