@@ -222,19 +222,14 @@ const EventRegistration = () => {
     };
   }, []);
 
-  // Add this useEffect hook to handle the scroll offset
   useEffect(() => {
     const handleLinkClick = (e: Event) => {
       const target = e.target as HTMLAnchorElement;
       if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
         e.preventDefault();
         const targetElement = document.querySelector(target.getAttribute('href')!);
-        const offset =25; // Adjust this value to set the offset
         if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - offset,
-            behavior: 'smooth'
-          });
+          targetElement.scrollIntoView({ behavior: 'smooth' });
         }
       }
     };
@@ -301,11 +296,13 @@ const EventRegistration = () => {
           </div>
         </nav>
 
-        <section id="home" className="min-h-screen flex items-center justify-center mt-7 pt-20 pb-32 relative">
+        {/* Keep the scroll-mt-20 class but it will now use the updated 60px value */}
+        <section id="home" className="min-h-screen flex items-center justify-center scroll-mt-20 relative">
             <div className="grid grid-cols-1 gap-8 items-center relative z-10">
               {/* Content */}
               <div className="text-center">
-                <div className="inline-block px-6 py-2 rounded-full bg-white/10 text-white font-medium text-sm mb-8 animate-fade-up">
+                {/* Add top margin for mobile view */}
+                <div className="inline-block px-6 py-2 rounded-full bg-white/10 text-white font-medium text-sm mb-8 animate-fade-up md:mt-0 mt-10">
                   <div className="flex items-center gap-2">
                     <Clock className="w-4 h-4 text-[#E5DEFF]" />
                     <span className="text-sm font-semibold">
@@ -336,7 +333,8 @@ const EventRegistration = () => {
             </div>
         </section>
 
-        <section id="about" className="py-20 px-4">
+        {/* Update all other sections to use scroll-mt-20 */}
+        <section id="about" className="py-16 px-4 scroll-mt-20">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#FF0096]">
                 About the Event
@@ -368,7 +366,7 @@ const EventRegistration = () => {
             </div>
         </section>
 
-        <section id="events" className="py-20 px-4">
+        <section id="events" className="py-16 px-4 scroll-mt-20">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#FF0096]">
                 Our Events
@@ -377,7 +375,7 @@ const EventRegistration = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {[
                 {
-                  title: "MazerLift",
+                  title: "Mazerift",
                   icon: GitBranch, // Changed icon to GitBranch
                   date: "4th March 2025",
                   team: "Team of 2-3 Members",
@@ -458,7 +456,7 @@ const EventRegistration = () => {
             </div>
         </section>
 
-        <section id="faq" className="py-20 px-4">
+        <section id="faq" className="py-16 px-4 scroll-mt-20">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#FF0096]">
                 Frequently Asked Questions
@@ -513,7 +511,7 @@ const EventRegistration = () => {
             </div>
         </section>
 
-        <section id="contact" className="py-20 px-4 relative">
+        <section id="contact" className="py-16 px-4 scroll-mt-20 relative">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <span className="px-4 py-1.5 rounded-full bg-[#FF0096]/20 text-[#FF0096] font-medium text-sm mb-6 inline-block backdrop-blur-md">
                 Get in Touch
