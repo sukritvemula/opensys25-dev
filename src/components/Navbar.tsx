@@ -21,7 +21,7 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
   ];
 
   return (
-    <nav className="fixed w-full z-50 backdrop-blur-sm bg-purple-900/10 h-14">
+    <nav className="fixed w-full z-50 backdrop-blur-sm bg-gray-900/10 h-14">
       <div className="max-w-7xl mx-auto px-3 h-full">
         <div className="flex items-center justify-between h-full">
           <div className="flex items-center gap-2">
@@ -56,7 +56,7 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
       </div>
       {isOpen && (
         <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-purple-900/90 backdrop-blur-md">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900/40 backdrop-blur-md">
             {navItems.map((item) => (
               <button
                 key={item.label}

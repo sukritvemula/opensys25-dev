@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 
 interface EventCardProps {
   title: string;
-  level: string;
   duration: string;
   description: string;
   date: string;
@@ -14,7 +13,6 @@ interface EventCardProps {
 
 const EventCard = ({
   title,
-  level,
   duration,
   description,
   date,
@@ -34,8 +32,6 @@ const EventCard = ({
         </div>
         
         <div className="flex items-center gap-3 text-sm">
-          <span className="bg-purple-900/30 text-purple-200 px-3 py-1 rounded-full">{level}</span>
-          <span className="text-purple-300">•</span>
           <span className="text-purple-200">{duration}</span>
         </div>
 
@@ -62,8 +58,8 @@ const EventCard = ({
 
         <Link 
               to={registrationLink}
-              className="w-full mt-4 bg-purple-600 hover:bg-purple-700 text-white px-6 py-2.5 rounded-full transition-colors duration-200 text-sm font-medium font-sora text-center"
-            >Registration Open</Link>
+              className="w-full mt-4 bg-purple-600/30 hover:bg-[#333]/20 hover:text-white hover:shadow-white/20 text-white px-6 py-2.5 rounded-full transition-colors duration-200 text-sm font-medium font-sora text-center"
+            >Register</Link>
       </div>
     </div>
   );

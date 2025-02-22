@@ -54,7 +54,6 @@ const Index = () => {
   const eventData = [
     {
       title: "MazerLift",
-      level: "Intermediate",
       duration: "4 Hours",
       description: "A two-stage challenge testing your Git & GitHub skills! Demonstrate version control mastery through practical scenarios and team collaboration.",
       date: "4th March 2025",
@@ -65,7 +64,6 @@ const Index = () => {
     },
     {
       title: "Decipher Challenge",
-      level: "Beginner Friendly",
       duration: "3 Hours",
       description: "Race against time in this thrilling scavenger hunt! Decrypt mysterious messages, solve coding puzzles, and uncover hidden patterns.",
       date: "5th March 2025",
@@ -76,9 +74,8 @@ const Index = () => {
     },
     {
       title: "Code Odyssey",
-      level: "Advanced",
       duration: "48-Hour Marathon",
-      description: "An intensive coding marathon featuring increasingly complex challenges across multiple domains including AI, Web Development, and Algorithms.",
+      description: "An exhilarating level-based game, that challenges the participants to use their logic and built-in tools to solve puzzles that get harder with each level! As the pressure mounts with each passing second, the one clearing all the levels at the end of Day 2, will be declared as the Conqueror!",
       date: "4th-5th March 2025",
       venue: "Workshop Rooms 1-3",
       team: "Individual Participation",
@@ -197,7 +194,6 @@ const Index = () => {
             ))}
           </div>
         </section>
-
         <section ref={faqRef} className="container mx-auto py-20 px-4">
           <h2 className="text-3xl font-bold text-white mb-12 text-center font-clash">
             Frequently Asked Questions
@@ -254,7 +250,7 @@ const Index = () => {
         </section>
 
         <footer className="py-8 px-4 text-center">
-          <p className="text-gray-400">COPYRIGHT © 2025 COSC. ALL RIGHTS RESERVED.</p>
+          <p className="text-white/30 font-sora">COPYRIGHT © 2025 COSC. ALL RIGHTS RESERVED.</p>
         </footer>
       </div>
     </div>
