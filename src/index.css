@@ -284,6 +284,17 @@ button:hover {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 50px; /* Reduced from 60px to 55px */
+}
+
+/* Add these new styles */
+@layer utilities {
+  .scroll-mt-24 {
+    scroll-margin-top: 96px;
+  }
+  .scroll-mt-20 {
+    scroll-margin-top: 50px;  /* Reduced from 60px to 55px */
+  }
 }
 
 /* Dark mode styles */
